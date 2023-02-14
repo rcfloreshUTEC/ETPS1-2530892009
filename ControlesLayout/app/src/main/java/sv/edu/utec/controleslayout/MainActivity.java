@@ -2,6 +2,8 @@ package sv.edu.utec.controleslayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,143 +12,117 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-Spinner spPais;
-EditText edtNombres, edtApellidos, etInfo;
-RadioButton rbMasculino, rbFemenino, rbOtros;
-
-
+    Spinner spPais;
+    EditText etNombres,etApellidos,etInfo;
+    RadioButton rbFem,rbMas,rbOtr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //EditText
+        etNombres=findViewById(R.id.edtNombres);
+        etApellidos=findViewById(R.id.edtApellidos);
+        etInfo=findViewById(R.id.editTextTextMultiLine);
+        //Spinner
+        spPais=findViewById(R.id.spnPais);
+        //Radiobuttons
+        rbFem= findViewById(R.id.rbFemenino);
+        rbMas=findViewById(R.id.rbMasculino);
+        rbOtr=findViewById(R.id.rbOtros);
 
-        edtNombres = findViewById(R.id.edtNombres);
-        edtApellidos = findViewById(R.id.edtApellidos);
-        etInfo = findViewById(R.id.editTextTextMultiLine);
-
-        spPais = findViewById(R.id.spnPais);
-
-
-
-        /* Forma 1
-        String[]opciones = {"Seleccione un pais","Guatemala","El Salvador", "Honduras", "Nicaragua", "Costa Rica", "Panama"};
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,opciones);
-
+        /* forma 1
+        spPais.setSelection(0, false);
+        String[]opciones={"Seleccione un Pais","Guatemala","El Salvador","Honduras","Nicaragua","Costa Rica","Panama"};
+       ArrayAdapter<String> adaptador=
+                new ArrayAdapter<String>(this,
+                        androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,opciones);
         spPais.setAdapter(adaptador);
-
         */
 
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item){
-            public View getView(int posicion, View contenido, ViewGroup parent){
-                View vista = super.getView(posicion, contenido, parent);
-                if(posicion == getCount())
-                {
+        ArrayAdapter<String> adaptador =new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item){
+
+            public View getView(int posicion,View contenido, ViewGroup parent){
+                View vista=super.getView(posicion,contenido,parent);
+                if(posicion==getCount()){
                     ((TextView)vista.findViewById(android.R.id.text1)).setText("");
                     ((TextView)vista.findViewById(android.R.id.text1)).setHint(getItem(getCount()));
                 }
-
                 return vista;
-            };
+            }
 
             public int getCount(){
-
                 return super.getCount()-1;
-            };
-
-
+            }
         };
 
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-
         adaptador.add("Guatemala");
         adaptador.add("El Salvador");
         adaptador.add("Honduras");
         adaptador.add("Nicaragua");
-        adaptador.add("Costa Rica");
         adaptador.add("Panama");
-        adaptador.add("Seleccione un pais");
-
+        adaptador.add("Costa Rica");
+        adaptador.add("Seleccione un Pais");//este es el elemento a quitar del spinner
         spPais.setAdapter(adaptador);
         spPais.setSelection(adaptador.getCount());
 
-
-        //Radio Buttons
-        rbMasculino = findViewById(R.id.rbMasculino);
-        rbFemenino = findViewById(R.id.rbFemenino);
-        rbOtros = findViewById(R.id.rbOtros);
-
-
-
     }
 
-    public void Almacenar(View view) {
-
-            String datos = "";
-            String seleccion = spPais.getSelectedItem().toString();
 
 
-            String nombres = edtNombres.getText().toString();
-            String apellidos = edtApellidos.getText().toString();
+    public void Almacenar(View v){
+        String datos="";
+        String seleccion = spPais.getSelectedItem().toString();
+        //get traer
+        //set enviar
+        String nombre=etNombres.getText().toString();
+        String apellido=etApellidos.getText().toString();
+        String genero="";
+        String info;
 
-            String genero = "";
-            String info = "";
 
-            if(rbFemenino.isChecked()==false && rbMasculino.isChecked()==false && rbOtros.isChecked()==false)
-            {
-                if(rbMasculino.isChecked() == true)
-                {
-                    genero = "Masculino";
-                }
-                else if (rbFemenino.isChecked() == true )
-                {
-                    genero = "Otros";
-                }
+        if(rbMas.isChecked()==false && rbMas.isChecked()==false && rbOtr.isChecked()==false)
+        {
+            Toast mensaje= Toast.makeText(this,"seleccione un genero",Toast.LENGTH_SHORT);
+            mensaje.show();
+        }
+        else {
+            if (rbMas.isChecked() == true) {
+                genero = "Masculino";
+            } else if (rbFem.isChecked() == true) {
+                genero = "Femenino";
+            } else {
+                genero = "Otros";
             }
+        }
 
+        if(seleccion.equals("Seleccione un Pais")){
+            datos="No selecciono ningun Pais";
+            etInfo.append(datos);
+        }
+        else if(seleccion.equals("Guatemala")){
+            datos="Guatemala";
+            etInfo.append(datos);
+        }
+        else if(seleccion.equals("El Salvador")){
+            datos="El Salvador";
+            etInfo.append(datos);
+        }
+        else if(seleccion.equals("Honduras")){
+            datos="Honduras";
+            etInfo.append(datos);
+        }
 
+        info="Los datos ingresados son los siguientes \n"+
+                "Nombre     : "+nombre+"\n"+
+                "Apellido   : "+apellido+"\n"+
+                "Genero     : "+genero +"\n"+
+                "Pais       :  "+datos+ "\n";
 
-            if (seleccion.equals("Seleccione un pais")){
-                datos = "No selecciono ningun pais";
-            }
-            else {
-                if (seleccion.equals("Guatemala"))
-                {
-                    datos = "Guatemala";
-                }
-                else if (seleccion.equals("El Salvador"))
-                {
-                    datos = "El Salvador";
-                }
-                else if (seleccion.equals("Honduras"))
-                {
-                    datos = "Honduras";
-                }
-                else if (seleccion.equals("Nicaragua"))
-                {
-                    datos = "Nicaragua";
-                }
-                else if (seleccion.equals("Costa Rica"))
-                {
-                    datos = "Costa Rica";
-                }
-                else if (seleccion.equals("Panama"))
-                {
-                    datos = "Panama";
-                }
-
-                info = "Los datos Ingresados son los siguientes \n"+
-                        "Nombres    : " +nombres+ "\n" +
-                        "Apellidos  : " +apellidos  + "\n" +
-                        //"Genero     : " + genero  +"\n" +
-                        "Pais       : " +datos + "\n";
-
-                etInfo.append(datos);
-
-            }
-
-            }
+        etInfo.append(info);
+//08/02/2023
+    }
 }
