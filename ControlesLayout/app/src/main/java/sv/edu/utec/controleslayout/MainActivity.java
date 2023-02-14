@@ -29,6 +29,8 @@ RadioButton rbMasculino, rbFemenino, rbOtros;
 
         spPais = findViewById(R.id.spnPais);
 
+
+
         /* Forma 1
         String[]opciones = {"Seleccione un pais","Guatemala","El Salvador", "Honduras", "Nicaragua", "Costa Rica", "Panama"};
         ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,opciones);
@@ -42,8 +44,8 @@ RadioButton rbMasculino, rbFemenino, rbOtros;
                 View vista = super.getView(posicion, contenido, parent);
                 if(posicion == getCount())
                 {
-                    ((TextView)vista.findViewById(R.id.text1)).setText("");
-                    ((TextView)vista.findViewById(R.id.text1)).setHint(getItem(getCount()));
+                    ((TextView)vista.findViewById(android.R.id.text1)).setText("");
+                    ((TextView)vista.findViewById(android.R.id.text1)).setHint(getItem(getCount()));
                 }
 
                 return vista;
@@ -71,15 +73,42 @@ RadioButton rbMasculino, rbFemenino, rbOtros;
         spPais.setAdapter(adaptador);
         spPais.setSelection(adaptador.getCount());
 
+
+        //Radio Buttons
         rbMasculino = findViewById(R.id.rbMasculino);
         rbFemenino = findViewById(R.id.rbFemenino);
         rbOtros = findViewById(R.id.rbOtros);
+
+
+
     }
 
     public void Almacenar(View view) {
 
             String datos = "";
             String seleccion = spPais.getSelectedItem().toString();
+
+
+            String nombres = edtNombres.getText().toString();
+            String apellidos = edtApellidos.getText().toString();
+
+            String genero = "";
+            String info = "";
+
+            if(rbFemenino.isChecked()==false && rbMasculino.isChecked()==false && rbOtros.isChecked()==false)
+            {
+                if(rbMasculino.isChecked() == true)
+                {
+                    genero = "Masculino";
+                }
+                else if (rbFemenino.isChecked() == true )
+                {
+                    genero = "Otros";
+                }
+            }
+
+
+
             if (seleccion.equals("Seleccione un pais")){
                 datos = "No selecciono ningun pais";
             }
@@ -108,6 +137,12 @@ RadioButton rbMasculino, rbFemenino, rbOtros;
                 {
                     datos = "Panama";
                 }
+
+                info = "Los datos Ingresados son los siguientes \n"+
+                        "Nombres    : " +nombres+ "\n" +
+                        "Apellidos  : " +apellidos  + "\n" +
+                        //"Genero     : " + genero  +"\n" +
+                        "Pais       : " +datos + "\n";
 
                 etInfo.append(datos);
 
