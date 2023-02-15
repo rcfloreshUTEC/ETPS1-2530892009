@@ -28,6 +28,4 @@ public class MainActivity extends AppCompatActivity {
         resultado = producto * 1.134;
         tvresultado.setText(String.valueOf(String.format("%.2f", resultado)));
     }
-
-
 }
