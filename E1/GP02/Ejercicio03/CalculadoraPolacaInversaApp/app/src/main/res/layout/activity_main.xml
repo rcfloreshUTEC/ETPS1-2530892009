@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="336dp"
+        android:layout_height="557dp"
+        android:layout_marginStart="36dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="143dp">
+
+        <EditText
+            android:id="@+id/edtValor1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese Valor 1"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edtSimbolo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese Simbolo"
+            android:inputType="textPersonName" />
+
+        <EditText
+            android:id="@+id/edtValor2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Ingrese Valor 2"
+            android:inputType="textPersonName" />
+
+        <Button
+            android:id="@+id/btnCalcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="Calcular"
+            android:text="Calcular" />
+
+        <TextView
+            android:id="@+id/tvResultado"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#673AB7"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
