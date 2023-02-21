@@ -1,0 +1,10 @@
+#Sun Feb 19 20:10:31 CST 2023
+base.2=D\:\\Users\\rcfloresh\\Documents\\GitHub\\ETPS1-2530892009\\E1\\GP02\\Ejercicio03\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\14\\classes.dex
+path.2=14/classes.dex
+base.1=D\:\\Users\\rcfloresh\\Documents\\GitHub\\ETPS1-2530892009\\E1\\GP02\\Ejercicio03\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+path.1=0/classes.dex
+base.0=D\:\\Users\\rcfloresh\\Documents\\GitHub\\ETPS1-2530892009\\E1\\GP02\\Ejercicio03\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+renamed.2=classes3.dex
+renamed.1=classes2.dex
+renamed.0=classes.dex
+path.0=classes.dex

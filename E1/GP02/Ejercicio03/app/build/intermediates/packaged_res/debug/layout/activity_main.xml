@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="351dp"
+            android:layout_height="580dp"
+            android:orientation="vertical"
+            tools:layout_editor_absoluteX="30dp"
+            tools:layout_editor_absoluteY="75dp">
+
+            <EditText
+                android:id="@+id/edtValor1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Ingrese valor 1"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/edtValor2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Ingrese valor 2"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/btnCalcular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="Calcular"
+                android:text="Calcular" />
+
+            <TextView
+                android:id="@+id/tvsuma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Suma:" />
+
+            <TextView
+                android:id="@+id/tvRsuma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvresta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Resta:" />
+
+            <TextView
+                android:id="@+id/tvRresta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvmultip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Multiplicación:" />
+
+            <TextView
+                android:id="@+id/tvRmultip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tvdivi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Dividir:" />
+
+            <TextView
+                android:id="@+id/tvRdivi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
